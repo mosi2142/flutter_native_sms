@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.mosi2142.flutter_native_sms">
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+</manifest>
