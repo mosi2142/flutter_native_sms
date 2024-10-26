@@ -10,11 +10,12 @@ class MethodChannelFlutterNativeSms extends FlutterNativeSmsPlatform {
   final methodChannel = const MethodChannel('flutter_native_sms');
 
   @override
-  Future<dynamic> send({required String phone,required String smsBody,String sim = '1'}) async {
+  Future<dynamic> send({required String phone,required String smsBody,String sim = '1',bool reportByToast = false}) async {
     final result = await methodChannel.invokeMethod<dynamic>('send',[
       phone,
       smsBody,
-      sim
+      sim,
+      reportByToast
     ]);
     return result;
   }

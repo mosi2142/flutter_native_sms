@@ -9,7 +9,8 @@ class MockFlutterNativeSmsPlatform
     implements FlutterNativeSmsPlatform {
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+
+  Future<dynamic> send({required String phone,required String smsBody,String sim = '1',bool reportByToast = false}) => Future.value(true);
 }
 
 void main() {
@@ -19,11 +20,11 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelFlutterNativeSms>());
   });
 
-  test('getPlatformVersion', () async {
+  test('send', () async {
     FlutterNativeSms flutterNativeSmsPlugin = FlutterNativeSms();
     MockFlutterNativeSmsPlatform fakePlatform = MockFlutterNativeSmsPlatform();
     FlutterNativeSmsPlatform.instance = fakePlatform;
 
-    expect(await flutterNativeSmsPlugin.getPlatformVersion(), '42');
+    expect(await flutterNativeSmsPlugin.send(phone: '123', smsBody: 'test'), '42');
   });
 }
