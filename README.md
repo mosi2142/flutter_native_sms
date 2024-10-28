@@ -1,4 +1,4 @@
-# send_sms_natively
+# flutter_native_sms
 A Flutter plugin for sending native sms, and also choosing from which sim to send the sms.
 Note : this plugin works only for android. Ios is not implemented yet.
 
