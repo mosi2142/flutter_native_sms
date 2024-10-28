@@ -11,3 +11,10 @@
 
 *  Removed reportSmsStatus param
 
+## 0.0.5
+
+*  Fixed typo in readme.md
+
+        
+
+
