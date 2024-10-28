@@ -10,7 +10,7 @@ class MockFlutterNativeSmsPlatform
 
   @override
 
-  Future<dynamic> send({required String phone,required String smsBody,String sim = '1',bool reportByToast = false}) => Future.value(true);
+  Future<dynamic> send({required String phone,required String smsBody,String sim = '1'}) => Future.value(true);
 }
 
 void main() {

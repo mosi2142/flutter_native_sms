@@ -119,8 +119,6 @@ public class FlutterNativeSmsPlugin implements FlutterPlugin, MethodCallHandler 
         String textBody = String.valueOf(arguments.get(1));
         int sim = Integer.parseInt(String.valueOf(arguments.get(2)));
 
-        boolean reportByToast = Boolean.parseBoolean(String.valueOf(arguments.get(3)));
-
         JSONArray simdatas = this.simData();
 
         int subId = simdatas.getJSONObject(sim).getInt("SUBSCRIPTION_ID");
@@ -143,54 +141,6 @@ public class FlutterNativeSmsPlugin implements FlutterPlugin, MethodCallHandler 
                 2,
                 new Intent(delivered),
                 PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
-        );
-
-
-        context.registerReceiver(
-          new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-              int res = getResultCode();
-              if(res == Activity.RESULT_OK){
-                if(reportByToast == true){
-                  Toast.makeText(context, "SMS Sent", Toast.LENGTH_SHORT).show();
-                }else{
-                  Log.w("SMS_REPORT","SMS Sent successfuly");
-                }
-              }else{
-                if(reportByToast == true){
-                  Toast.makeText(context, "SMS not sent. Something went wrong!", Toast.LENGTH_SHORT).show();
-                }else{
-                  Log.w("SMS_REPORT","SMS not sent. Something went wrong!");
-                }
-              }
-            }
-          },
-          new IntentFilter(sent),
-          Context.RECEIVER_EXPORTED
-        );
-
-        context.registerReceiver(
-          new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-              int res = getResultCode();
-              if(res == Activity.RESULT_OK){
-                if(reportByToast == true){
-                  Toast.makeText(context, "SMS delivered", Toast.LENGTH_SHORT).show();
-                }else{
-                  Log.w("SMS_REPORT","SMS delivered successfuly");
-                }
-              }else{
-                if(reportByToast == true){
-                  Toast.makeText(context, "SMS not delivered", Toast.LENGTH_SHORT).show();
-                }else{
-                  Log.w("SMS_REPORT","SMS not delivered. Something went wrong!");
-                }
-              }
-            }
-          }, new IntentFilter(delivered),
-          Context.RECEIVER_EXPORTED
         );
 
         smsManager.sendTextMessage(phoneNumber, null, textBody, sendPendingIntent, deliveryPendingIntent);

@@ -30,7 +30,6 @@ class _MyAppState extends State<MyApp> {
         phone: _phoneController.value.text,
         smsBody: _smsBodyController.value.text,
         sim: sim,
-        reportByToast: true
     );
     debugPrint(result.toString());
   }
