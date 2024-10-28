@@ -29,10 +29,8 @@ you may also need to request sms permission from user with [`permission_handler`
       phone:'phone number your want to send the sms',
       smsBody:'A sms text',
       sim:'0', // choose which sim you want to send the sms from, the default is 0 which means first sim, if u have dual sim you can change the value to 1 which means second sim
-      reportByToast: false, // show toast as report, default is false
  );
 ```
-note : sim is not implemented yet
 
 [1]: https://pub.dev/packages/permission_handler
     
