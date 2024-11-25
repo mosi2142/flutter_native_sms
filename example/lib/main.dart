@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _smsBodyController = TextEditingController();
   String sim = '0';
-
+  String? _simInfo;
   _sendSms() async {
     var result = await _sendSmsNativelyPlugin.send(
         phone: _phoneController.value.text,
@@ -32,6 +32,14 @@ class _MyAppState extends State<MyApp> {
         sim: sim,
     );
     debugPrint(result.toString());
+  }
+
+  _getSimInfo() async{
+    List result = await _sendSmsNativelyPlugin.simInfo();
+    debugPrint(result.toString());
+    setState(() {
+      _simInfo = result.toString();
+    });
   }
 
   @override
@@ -79,6 +87,12 @@ class _MyAppState extends State<MyApp> {
                 child: ElevatedButton(
                     onPressed: _sendSms, child: const Text('Send')),
               ),
+              Center(
+                child: ElevatedButton(
+                    onPressed: _getSimInfo, child: const Text('Get sim\'s info...')),
+              ),
+              if(_simInfo != null)
+                Text(_simInfo!),
             ],
           ),
         ),

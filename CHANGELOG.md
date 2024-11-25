@@ -15,6 +15,10 @@
 
 *  Fixed typo in readme.md
 
+## 0.0.6
+
+*  Now its possible to retrieve sim's info of the user phone
+
         
 
 

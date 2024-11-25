@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -17,5 +19,10 @@ class MethodChannelFlutterNativeSms extends FlutterNativeSmsPlatform {
       sim,
     ]);
     return result;
+  }
+
+  Future<List> simInfo() async{
+    String result = await methodChannel.invokeMethod('simInfo');
+    return jsonDecode(result);
   }
 }

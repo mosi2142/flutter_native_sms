@@ -24,6 +24,9 @@ abstract class FlutterNativeSmsPlatform extends PlatformInterface {
   }
 
   Future<dynamic> send({required String phone,required String smsBody,String sim = '1'}) {
-    throw UnimplementedError('sendSmsNatively() has not been implemented.');
+    throw UnimplementedError('send() has not been implemented.');
+  }
+  Future<List> simInfo() {
+    throw UnimplementedError('simInfo() has not been implemented.');
   }
 }

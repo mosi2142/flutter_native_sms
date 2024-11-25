@@ -1,6 +1,6 @@
 name: flutter_native_sms
 description: "A Flutter plugin for sending native sms. for android only"
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/mosi2142/flutter_native_sms
 
 environment:

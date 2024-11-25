@@ -11,6 +11,7 @@ class MockFlutterNativeSmsPlatform
   @override
 
   Future<dynamic> send({required String phone,required String smsBody,String sim = '1'}) => Future.value(true);
+  Future<List<Map>> simInfo() => Future.value([{'success':true}]);
 }
 
 void main() {
@@ -25,6 +26,13 @@ void main() {
     MockFlutterNativeSmsPlatform fakePlatform = MockFlutterNativeSmsPlatform();
     FlutterNativeSmsPlatform.instance = fakePlatform;
 
-    expect(await flutterNativeSmsPlugin.send(phone: '123', smsBody: 'test'), '42');
+    expect(await flutterNativeSmsPlugin.send(phone: '123', smsBody: 'test'), 'failed');
+  });
+  test('simInfo', () async {
+    FlutterNativeSms flutterNativeSmsPlugin = FlutterNativeSms();
+    MockFlutterNativeSmsPlatform fakePlatform = MockFlutterNativeSmsPlatform();
+    FlutterNativeSmsPlatform.instance = fakePlatform;
+
+    expect(await flutterNativeSmsPlugin.smInfo(), 'nothing');
   });
 }

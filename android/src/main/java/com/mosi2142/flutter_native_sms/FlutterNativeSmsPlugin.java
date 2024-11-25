@@ -151,6 +151,9 @@ public class FlutterNativeSmsPlugin implements FlutterPlugin, MethodCallHandler 
         result.error("Something went wrong", "Send sms exception : "+ ex.getMessage(), null);
       }
 
+    }else if(call.method.equals("simInfo")){
+      JSONArray simdatas = this.simData();
+      result.success(simdatas.toString());
     }else{
       result.notImplemented();
     }
